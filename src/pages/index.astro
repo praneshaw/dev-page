@@ -1,11 +1,131 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Project metadata array (can be moved to local Markdown/MDX later)
+const projects = [
+  {
+    title: "RESTful API Engine",
+    description: "High-throughput API built with custom authentication guards, native UUID primary keys, and PostgreSQL.",
+    tags: ["PHP", "Laravel", "PostgreSQL", "Docker"],
+    githubUrl: "https://github.com/yourusername/project-one"
+  },
+  {
+    title: "Backend Microservice Boilerplate",
+    description: "Production-grade starter template with queue workers, Redis caching, and automated test runners.",
+    tags: ["Laravel", "Redis", "REST API", "Postman"],
+    githubUrl: "https://github.com/yourusername/project-two"
+  }
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Portfolio</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen px-6 py-12 font-sans antialiased">
+    <main class="max-w-4xl mx-auto space-y-16">
+      
+      <!-- Navigation / Header -->
+      <nav class="flex justify-between items-center pb-6 border-b border-slate-800/80">
+        <span class="font-bold text-lg text-indigo-400">dev.portfolio</span>
+        <div class="space-x-6 text-sm text-slate-400 font-medium">
+          <a href="#projects" class="hover:text-white transition">Projects</a>
+          <a href="#skills" class="hover:text-white transition">Skills</a>
+          <a href="#contact" class="hover:text-white transition">Contact</a>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="space-y-6 pt-4">
+        <div class="inline-block px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs font-mono border border-indigo-500/20">
+          Backend Engineer & Architecture Specialist
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Building scalable APIs, clean database schemas, and microservices.
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl">
+          Experienced in designing robust web application backends, managing relational databases, and containerized deployments.
+        </p>
+        <div class="flex gap-4 pt-2">
+          <a href="#projects" class="px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition">
+            View Case Studies
+          </a>
+          <a href="https://github.com/yourusername" target="_blank" class="px-5 py-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 font-medium text-sm transition">
+            GitHub Profile
+          </a>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="space-y-8">
+        <div class="border-b border-slate-800/80 pb-3">
+          <h2 class="text-2xl font-bold text-white">Featured Projects</h2>
+          <p class="text-slate-400 text-sm">Key architectural work and client applications.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <article class="p-6 bg-slate-900/60 rounded-xl border border-slate-800/80 hover:border-slate-700 transition flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-xl font-bold text-white">{project.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{project.description}</p>
+              </div>
+
+              <div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span class="px-2.5 py-0.5 text-xs font-mono rounded bg-slate-800 text-slate-300 border border-slate-700/50">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href={project.githubUrl} target="_blank" class="text-xs font-medium text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                  Source Code &rarr;
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Tech Stack Section -->
+      <section id="skills" class="space-y-6">
+        <div class="border-b border-slate-800/80 pb-3">
+          <h2 class="text-2xl font-bold text-white">Tech Stack & Tooling</h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm font-mono">
+          <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-lg">
+            <span class="text-slate-500 block text-xs">BACKEND</span>
+            <span class="text-slate-200 font-bold">PHP / Laravel</span>
+          </div>
+          <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-lg">
+            <span class="text-slate-500 block text-xs">DATABASE</span>
+            <span class="text-slate-200 font-bold">PostgreSQL</span>
+          </div>
+          <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-lg">
+            <span class="text-slate-500 block text-xs">INFRASTRUCTURE</span>
+            <span class="text-slate-200 font-bold">Docker / GCP</span>
+          </div>
+          <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-lg">
+            <span class="text-slate-500 block text-xs">TOOLING</span>
+            <span class="text-slate-200 font-bold">Git / Postman</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact / Footer -->
+      <footer id="contact" class="pt-8 border-t border-slate-800/80 text-center space-y-4">
+        <h2 class="text-xl font-bold text-white">Let's Connect</h2>
+        <p class="text-slate-400 text-sm">Open to backend engineering opportunities and technical collaboration.</p>
+        <div class="flex justify-center gap-6 text-sm text-indigo-400 font-medium">
+          <a href="mailto:your.email@example.com" class="hover:underline">Email</a>
+          <a href="https://github.com/yourusername" target="_blank" class="hover:underline">GitHub</a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" class="hover:underline">LinkedIn</a>
+        </div>
+      </footer>
+
+    </main>
+  </body>
+</html>
