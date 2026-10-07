@@ -8,5 +8,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: 'https://praneshaw.github.io',
-  base: '/my-portfolio',
+  base: '/dev-page',
 });
