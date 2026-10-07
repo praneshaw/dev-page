@@ -1,0 +1,41 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="py-24 sm:py-32">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <h1
+      class="text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 mb-6"
+    >
+      {t("hero.greeting")}
+      <span
+        class="block text-neutral-500 dark:text-neutral-400 mt-2 font-mono text-3xl sm:text-4xl"
+        >{t("hero.role")}</span
+      >
+    </h1>
+
+    <p
+      class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-300 max-w-2xl leading-relaxed mb-10"
+    >
+      {t("hero.bio")}
+    </p>
+
+    <div class="flex flex-wrap gap-3 font-mono text-sm">
+      <span class="px-3 py-1 bg-neutral-200 dark:bg-neutral-800 rounded-md"
+        >PHP</span
+      >
+      <span class="px-3 py-1 bg-neutral-200 dark:bg-neutral-800 rounded-md"
+        >Laravel</span
+      >
+      <span class="px-3 py-1 bg-neutral-200 dark:bg-neutral-800 rounded-md"
+        >PostgreSQL</span
+      >
+      <span class="px-3 py-1 bg-neutral-200 dark:bg-neutral-800 rounded-md"
+        >MySQL</span
+      >
+    </div>
+  </div>
+</section>

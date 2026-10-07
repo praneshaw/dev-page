@@ -1,0 +1,27 @@
+[
+  {
+    "id": "project-1",
+    "title": "TerasSapa",
+    "description": {
+      "en": "TerasSapa is a website ecosystem and CMS platform designed for MSMEs. Through flexible subscription plans and templates, users can instantly launch and market their brand identity without technical hurdles.",
+      "id": "TerasSapa adalah platform ekosistem website dan CMS yang dirancang untuk UMKM. Melalui pemilihan paket langganan dan template yang fleksibel, pengguna dapat meluncurkan serta memasarkan identitas brand mereka secara instan tanpa hambatan teknis."
+    },
+    "tech": [
+      "Laravel",
+      "PostgreSQL"
+    ],
+    "highlights": {
+      "en": [
+        "Achieved 10k+ requests per second throughput",
+        "Implemented intelligent rate-limiting and retry queues",
+        "Optimized payload parsing using zero-allocation techniques"
+      ],
+      "id": [
+        "Mencapai throughput 10.000+ permintaan per detik",
+        "Mengimplementasikan pembatasan laju cerdas dan antrean percobaan ulang",
+        "Mengoptimalkan parsing payload menggunakan teknik zero-allocation"
+      ]
+    },
+    "link": "https://terassapa.id"
+  }
+]

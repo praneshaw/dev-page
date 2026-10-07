@@ -1,2 +1,21 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap');
 
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+@variant dark (&:is(.dark *));
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-white text-neutral-900 transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-[#0a0a0a] text-neutral-100;
+  }
+}

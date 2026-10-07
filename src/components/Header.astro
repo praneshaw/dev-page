@@ -1,0 +1,60 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import { useTranslations, getLangFromUrl } from "../i18n/utils";
+import { defaultLang } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const currentPath = Astro.url.pathname;
+const isId = lang === "id";
+const oppositeLangUrl = isId
+  ? currentPath.replace(/^\/id/, "") || "/"
+  : `/id${currentPath === "/" ? "" : currentPath}`;
+---
+
+<header
+  class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-950/80 backdrop-blur"
+>
+  <div
+    class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
+  >
+    <div class="flex items-center gap-6">
+      <a
+        href={lang === defaultLang ? "/" : `/${lang}`}
+        class="font-mono font-bold text-lg tracking-tighter"
+      >
+        {"{ praneshaw }"}
+      </a>
+      <nav class="hidden sm:flex gap-4 font-mono text-sm">
+        <a
+          href="#projects"
+          class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+        >
+          {t("nav.projects")}
+        </a>
+        <a
+          href="#experience"
+          class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+        >
+          {t("nav.experience")}
+        </a>
+        <a
+          href="#contact"
+          class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+        >
+          {t("nav.contact")}
+        </a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <a
+        href={oppositeLangUrl}
+        class="font-mono text-sm px-2 py-1 border border-neutral-200 dark:border-neutral-800 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+      >
+        {isId ? "EN" : "ID"}
+      </a>
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
