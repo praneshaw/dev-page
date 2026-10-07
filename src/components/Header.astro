@@ -7,10 +7,20 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+
+let relativePath = currentPath;
+if (relativePath.startsWith(base)) {
+  relativePath = '/' + relativePath.slice(base.length);
+}
+relativePath = relativePath.replace(/^\/+/, '/');
+
 const isId = lang === "id";
-const oppositeLangUrl = isId
-  ? currentPath.replace(/^\/id/, "") || "/"
-  : `/id${currentPath === "/" ? "" : currentPath}`;
+let nextRelativePath = isId
+  ? relativePath.replace(/^\/id/, "") || "/"
+  : `/id${relativePath === "/" ? "" : relativePath}`;
+
+const oppositeLangUrl = `${base.replace(/\/$/, '')}${nextRelativePath}`;
 ---
 
 <header
@@ -21,7 +31,7 @@ const oppositeLangUrl = isId
   >
     <div class="flex items-center gap-6">
       <a
-        href={lang === defaultLang ? "/" : `/${lang}`}
+        href={lang === defaultLang ? base : `${base.replace(/\/$/, '')}/${lang}/`}
         class="font-mono font-bold text-lg tracking-tighter"
       >
         {"{ praneshaw }"}
